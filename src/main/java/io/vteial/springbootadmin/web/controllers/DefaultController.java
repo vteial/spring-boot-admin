@@ -8,12 +8,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/")
 public class DefaultController {
 
 	final Logger _log = LoggerFactory.getLogger(DefaultController.class);
 
-	@RequestMapping(value = "ping", method = RequestMethod.GET)
+	@RequestMapping(value = "/ping", method = RequestMethod.GET)
 	public @ResponseBody String ping() {
 		return "Ping Pong!";
 	}

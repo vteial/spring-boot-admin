@@ -7,7 +7,7 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>java:io.vteial.springbootadmin.Application</config>
+		<config>java:io.vteial.wyslite.Application</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

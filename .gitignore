@@ -10,3 +10,7 @@ gradle-app.setting
 !gradle-wrapper.jar
 
 build/
+
+*.db
+
+src/main/webapp/access-data/bower_components/

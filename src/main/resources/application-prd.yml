@@ -1,0 +1,5 @@
+spring:
+
+  datasource:
+    jndi-name: java:comp/env/jdbc/wss
+    #url : jdbc:h2:tcp://localhost/~/app-home/wss/h2

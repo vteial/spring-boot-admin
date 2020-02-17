@@ -32,6 +32,3 @@ HELP.md
 .settings/org.eclipse.buildship.core.prefs
 /bin/
 /generated/
-/temp/access-data/
-/temp/harmoney-dbs/
-/temp/watchyourstocks/

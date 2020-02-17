@@ -1,0 +1,8 @@
+server:
+  port: 9090
+  boot:
+    admin:
+      client:
+        url: http://localhost:${server.port}/sbas
+        instance:
+          service-base-url: http://localhost:${server.port}

@@ -1,4 +1,4 @@
-package io.wybis.wss.dto;
+package sbas.dto;
 
 import lombok.Data;
 

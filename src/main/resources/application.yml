@@ -1,29 +1,13 @@
 info:
   app:
-    name: wss
-    description: Wybis System Service
+    name: sbas
+    description: Spring Boot Admin Service
     version: 1.0.0
 
-spring:
-  application:
-    name: Wybis System Service
-  profiles:
-    active: secure
-  security:
-    user:
-      name: "sadmin"
-      password: "wybis4321"
-  boot:
-    admin:
-      client:
-        url: http://localhost:8080
-        username: ${spring.security.user.name}       #These two are needed so that the client
-        password: ${spring.security.user.password}   #can register at the protected server api
-        instance:
-          service-base-url: http://localhost:8080
-          metadata:
-            user.name: ${spring.security.user.name}         #These two are needed so that the server
-            user.password: ${spring.security.user.password} #can access the protected client endpoints
+server:
+  port: 8080
+  servlet:
+    context-path: /sbas
 
 management:
   endpoints:
@@ -33,9 +17,40 @@ management:
   endpoint:
     health:
       show-details: ALWAYS
+#  server:
+#    servlet:
+#      context-path: /sbas
+
+spring:
+  application:
+    name: Spring Boot Admin Service
+  boot:
+    admin:
+      client:
+        url: http://localhost:8080/sbas
+        instance:
+          service-base-url: http://localhost:8080/sbas
+  profiles:
+    active: secure
 
 ---
 spring:
   profiles: insecure
+
 ---
+spring:
+  profiles: secure
+  security:
+    user:
+      name: "sbadmin"
+      password: "sbas4321"
+  boot:
+    admin:
+      client:
+        username: ${spring.security.user.name}      #These two are needed so that the client
+        password: ${spring.security.user.password}  #can register at the protected server api
+        instance:
+          metadata:
+            user.name: ${spring.security.user.name}         #These two are needed so that the server
+            user.password: ${spring.security.user.password} #can access the protected client endpoints
 

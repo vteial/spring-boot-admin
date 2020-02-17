@@ -1,4 +1,4 @@
-package io.wybis.wss.web.controllers;
+package sbas.web.controllers;
 
 public abstract class AbstractController {
 

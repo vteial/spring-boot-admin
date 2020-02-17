@@ -1,5 +1,6 @@
-package io.wybis.wss;
+package sbas;
 
+//import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import de.codecentric.boot.admin.server.config.AdminServerProperties;
 import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import org.joda.time.format.DateTimeFormat;
@@ -11,6 +12,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
@@ -19,10 +21,10 @@ import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
 import java.text.DecimalFormat;
-import java.util.Properties;
 
-@Configuration
+//@EnableEncryptableProperties
 @EnableAdminServer
+@EnableAsync
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer {
 
@@ -34,18 +36,6 @@ public class Application extends SpringBootServletInitializer {
     protected SpringApplicationBuilder configure(
             SpringApplicationBuilder application) {
         return application.sources(Application.class);
-    }
-
-    @Bean
-    Properties javaMailProperties() {
-        Properties props = new Properties();
-
-        props.setProperty("mail.smtp.timeout", "3000");
-        props.setProperty("mail.smtp.connectiontimeout", "3000");
-        props.setProperty("mail.smtp.auth", "true");
-        props.setProperty("mail.smtp.starttls.enable", "true");
-
-        return props;
     }
 
     @Bean
@@ -64,13 +54,6 @@ public class Application extends SpringBootServletInitializer {
     }
 
     @Bean
-    DecimalFormat amountFormatterAndParser() {
-        DecimalFormat df = new DecimalFormat();
-        df.setMaximumFractionDigits(2);
-        return df;
-    }
-
-    @Bean
     RestTemplate restTemplate() {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate;
@@ -78,7 +61,7 @@ public class Application extends SpringBootServletInitializer {
 
     @Bean
     File appHome() {
-        File appHome = new File("~/app-home/spring-boot-admin");
+        File appHome = new File("~/app-home/sbas");
 
         return appHome;
     }
@@ -113,6 +96,9 @@ public class Application extends SpringBootServletInitializer {
 
         public SecuritySecureConfig(AdminServerProperties adminServerProperties) {
             this.adminContextPath = adminServerProperties.getContextPath();
+            System.out.println("----------------------------------------");
+            System.out.println("adminContextPath : " + this.adminContextPath);
+            System.out.println("----------------------------------------");
         }
 
         @Override
@@ -136,4 +122,5 @@ public class Application extends SpringBootServletInitializer {
             // @formatter:on
         }
     }
+
 }

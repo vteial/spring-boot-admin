@@ -1,16 +1,37 @@
-.idea/
+HELP.md
+.gradle
+/build/
+!gradle/wrapper/gradle-wrapper.jar
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
 *.iml
+*.ipr
+/out/
 
-.gradle/
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
 
-# Ignore Gradle GUI config
-gradle-app.setting
+### VS Code ###
+.vscode/
 
-# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
-
-build/
-
-*.db
-
-src/main/webapp/access-data/bower_components/
+.settings/org.eclipse.buildship.core.prefs
+/bin/
+/generated/
+/temp/access-data/
+/temp/harmoney-dbs/
+/temp/watchyourstocks/
